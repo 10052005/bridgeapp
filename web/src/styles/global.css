@@ -1,0 +1,170 @@
+/* ============================================================
+   BridgeApp — design tokens
+   Colours sampled directly from the approved wireframes.
+   Change a value here and it updates across all three pages.
+   ============================================================ */
+:root {
+  --peach:       #FFC5A6;
+  --rose:        #E5989B;
+  --rose-deep:   #D97B7F;
+  --ink:         #2B2B2B;
+  --ink-soft:    #6E6E6E;
+  --placeholder: #B0B0B0;
+  --line:        #DDDDDD;
+  --card-line:   #F3B9A6;
+  --white:       #FFFFFF;
+  --danger:      #C0392B;
+  --slate:       #4A5568;
+
+  --radius-card:  14px;
+  --radius-field: 8px;
+
+  --font: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--peach);
+  font-family: var(--font);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--rose); }
+
+/* ---------- Page shell ---------- */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 26px 0;
+}
+
+.page-logo img { height: 40px; width: auto; display: block; }
+
+.page-head { text-align: center; margin-top: -20px; }
+.page-head h1 {
+  font-size: 30px; font-weight: 700; margin: 0 0 3px; letter-spacing: -.3px;
+}
+.page-head p { margin: 0; font-size: 13px; opacity: .78; }
+
+/* ---------- Role toggle ---------- */
+.toggle {
+  margin: 14px auto 0;
+  display: flex;
+  border-radius: 999px;
+  overflow: hidden;
+  width: 340px;
+}
+.toggle button {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  border: 0; cursor: pointer;
+  padding: 10px 0;
+  background: var(--white);
+  font-family: inherit; font-size: 13.5px; font-weight: 500;
+  color: var(--ink);
+  transition: background .18s ease;
+}
+.toggle button[aria-selected="true"] { background: var(--rose); font-weight: 600; }
+.toggle button:focus-visible { outline: 2px solid var(--ink); outline-offset: -3px; }
+.toggle svg { width: 15px; height: 15px; }
+
+/* ---------- Card ---------- */
+.card {
+  background: var(--white);
+  border: 1px solid var(--card-line);
+  border-radius: var(--radius-card);
+  padding: 20px 28px 22px;
+}
+.card h2 {
+  display: flex; align-items: center; gap: 9px;
+  margin: 0 0 16px;
+  font-size: 16px; font-weight: 600;
+  color: var(--rose);
+}
+.card h2 svg { width: 17px; height: 17px; }
+.card.is-dim { opacity: .45; }
+
+/* ---------- Fields ---------- */
+.field { margin-bottom: 14px; }
+.field label { display: block; font-size: 11.5px; font-weight: 600; margin-bottom: 6px; }
+.control { position: relative; }
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-field);
+  font-family: inherit; font-size: 12.5px;
+  color: var(--ink);
+  background: var(--white);
+}
+.field textarea { resize: vertical; min-height: 74px; }
+.field select { cursor: pointer; }
+.field input::placeholder,
+.field textarea::placeholder { color: var(--placeholder); }
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px rgba(229,152,155,.22);
+}
+.field input.has-error,
+.field textarea.has-error,
+.field select.has-error { border-color: var(--danger); }
+
+.field .error {
+  display: block;
+  margin-top: 5px;
+  font-size: 10.5px;
+  color: var(--danger);
+}
+
+.eye {
+  position: absolute; right: 10px; top: 19px;
+  background: none; border: 0; padding: 2px; cursor: pointer;
+  color: var(--placeholder); line-height: 0;
+}
+.eye:hover { color: var(--ink-soft); }
+.eye:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; border-radius: 4px; }
+.eye svg { width: 15px; height: 15px; }
+.field input[type="password"], .control.has-eye input { padding-right: 38px; }
+
+/* ---------- Buttons ---------- */
+.btn-submit {
+  width: 100%;
+  border: 0; cursor: pointer;
+  background: var(--rose);
+  color: var(--ink);
+  font-family: inherit; font-size: 16px; font-weight: 700;
+  padding: 13px 0;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  transition: background .18s ease;
+}
+.btn-submit:hover:not(:disabled) { background: var(--rose-deep); }
+.btn-submit:disabled { opacity: .6; cursor: not-allowed; }
+.btn-submit:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+/* ---------- Form-level banner ---------- */
+.banner {
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+.banner.error   { background: #FDEDEB; color: var(--danger);  border: 1px solid #F5C6C0; }
+.banner.success { background: #EAF7EF; color: #1E7A46;        border: 1px solid #BFE5CC; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

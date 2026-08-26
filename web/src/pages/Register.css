@@ -1,0 +1,73 @@
+.register-page { padding-bottom: 8px; }
+
+.register-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 14px;
+}
+
+.register-banner { max-width: 900px; margin-left: auto; margin-right: auto; width: 100%; }
+
+.register-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+/* fieldset needs resetting before it can look like the card */
+.register-grid fieldset {
+  border: 1px solid var(--card-line);
+  margin: 0;
+  min-width: 0;
+  transition: opacity .2s ease;
+}
+.register-grid fieldset:disabled { pointer-events: none; }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 18px;
+}
+
+/* ---- Portfolio dropzone ----
+   Selector is .field .dropzone (not .dropzone) so it outranks the
+   `.field label { display: block }` rule in global.css. */
+.field .dropzone {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-field);
+  padding: 12px 14px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: border-color .18s ease, background .18s ease;
+}
+.field .dropzone:hover { border-color: var(--rose); background: #FFF8F5; }
+.field .dropzone:focus-within { border-color: var(--rose); box-shadow: 0 0 0 3px rgba(229,152,155,.22); }
+.field .dropzone .hint { color: var(--placeholder); font-size: 10.5px; white-space: nowrap; }
+.field .dropzone input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+
+.register-foot {
+  text-align: center;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin: 0 0 14px;
+}
+.register-foot a { font-weight: 600; text-decoration: none; }
+.register-foot a:hover { color: var(--rose-deep); text-decoration: underline; }
+
+@media (max-width: 900px) {
+  .register-grid { grid-template-columns: 1fr; }
+  /* Hide the inactive card entirely on narrow screens rather than dimming it. */
+  .register-grid fieldset.is-dim { display: none; }
+}
+
+@media (max-width: 560px) {
+  .two-col { grid-template-columns: 1fr; }
+}
